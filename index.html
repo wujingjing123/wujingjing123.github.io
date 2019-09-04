@@ -1,221 +1,212 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://www.jq22.com/jquery/jquery-3.3.1.js"></script>
-	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<style type="text/css">
-		[v-cloak]{
-			display: none;
-		}
-		.ul{
-			list-style: none;
-		}
-		.ul li{
-			height: 50px;
-			text-align: center;
-			line-height: 50px;
-		}
-	</style>
-</head>
-<body>
-	<div id="box" class="container" v-cloak="">
-		<!-- 头部 -->
-		<div class="row" style="background: #ccc; margin: 0px">
-		  <div class="col-md-2 col-md-offset-10 col-sm-2 col-sm-offset-10 col-xs-2 col-xs-offset-10" style="line-height: 60px">
-		  	<button class="btn btn-info" data-toggle="modal" data-target="#myModal">购物车</button>
-		  </div>
-		</div>
-		<!-- 内容 -->
-		<div style="padding: 0 20px;border:1px solid #ccc;min-height: 600px">
-			<!---->
-			<div class="row">
-				<div class="col-sm-6 col-md-4" v-for="i in arr">
-					<div class="thumbnail">
-						<div style="min-height: 200px;width: 100%;background: #ccc;">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-						</div>
-						<div class="caption" style="overflow: hidden;">
-							<h3>{{i.n}}</h3>
-							<p>价格{{i.j}}</p>
-							<p>
-								<button class="btn" style="float: right;" @click="insert_g_arr(i)">加入购物车</button>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!---->
-		</div>
-		<!-- 购物车 -->
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">购物车</h4>
-					</div>
-					<div class="modal-body">
-						 <div v-if="g_arr.length">
-						 	<ul class="row ul">
-						 		<li class="col-md-2 col-sm-2 col-xs-2">商品</li>
-						 		<li class="col-md-2 col-sm-2 col-xs-2">价格</li>
-						 		<li class="col-md-2 col-sm-2 col-xs-2">数量</li>
-						 		<li class="col-md-2 col-sm-2 col-xs-2">小计</li>
-						 		<li class="col-md-2 col-sm-2 col-xs-2">删除</li>
-						 	</ul>
-						 	<div>
-						 		<div style="height: 280px; overflow-y: scroll;">
-						 			<div v-for="i in c_g_arr" style="width: 97%;">
-						 				<h4>{{i}}</h4>
-							 			<ul class="row ul" v-for="a in g_arr" v-if="i == a.t">
-									 		<li class="col-md-2 col-sm-2 col-xs-2">{{a.n}}</li>
-									 		<li class="col-md-2 col-sm-2 col-xs-2">{{a.j}}</li>
-									 		<li class="col-md-3 col-sm-3 col-xs-3">
-									 			<span class="btn" @click="no2(a.uid)">-</span>
-									 			{{a.s}}
-									 			<span class="btn" @click="no1(a.uid)">+</span>
-									 		</li>
-									 		<li class="col-md-2 col-sm-2 col-xs-2">{{a.j*a.s}}</li>
-									 		<li class="col-md-2 col-sm-2 col-xs-2"><button class="btn btn-danger" @click="no3(a.uid)">移除</button></li>
-									 	</ul>
-								 	</div>
-						 		</div>
-						 	</div>
-						 	<div style="line-height: 60px;padding-bottom: 20px;text-align: right;padding-right: 50px;">
-						 		总价：{{z_num}}
-						 	</div>
-						 </div>
-						 <div v-else style="line-height: 150px;text-align: center;">
-						 	购物车暂时没有数据
-						 </div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary">支付</button>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!---->
-	</div>
+  <title>Home</title>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">                <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  <link rel="stylesheet" href="css/tooplate-style.css"><!-- tooplate style -->
+  <!-- Magnific Popup core CSS file -->
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+  </head>
+
+      <body>
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/bg-img-01.jpg">
+          <section class="container tm-page-1-content">
+            <div class="row">
+              <div class="col-md-6 ml-auto tm-text-white">
+                <header><h1>Individual</h1></header>
+                <p>Mauris nec urna facilisis, sagittis libero at, hendrerit est. Maecenas et ligula sed justo scelerisque placerat sit amet eget tellus. Mauris dolor purus, pharetra sed velit id, tempus maximus nunc. Aenean eleifend id odio id semper. Nam at pellentesque ipsum.</p>
+                
+                  <a href="#tm-section-2" class="btn btn-danger">Explore...</a>
+              </div>
+            </div>
+
+          </section>
+        </div>
 
 
-	<script type="text/javascript" src="vue.js"></script>
-	<script type="text/javascript">
-		new Vue({
-			el:'#box',
-			methods:{
-				no1(uid){
-				  //数量++
-				  for(var i=0;i<this.g_arr.length;i++){
-						if(this.g_arr[i].uid == uid){
-							var num = this.g_arr[i].s
-							num++
-							this.$set(this.g_arr[i],'s',num)
-						}
-					}
-				},
-				no2(uid){
-				  //数量--
-				  for(var i=0;i<this.g_arr.length;i++){
-						if(this.g_arr[i].uid == uid){
-							var num = this.g_arr[i].s
-							num--
-							if(num<=0){
-								num=1
-							}
-							this.$set(this.g_arr[i],'s',num)
-						}
-					}
-				},
-				no3(uid){
-					// 移除
-					for(var i=0;i<this.g_arr.length;i++){
-						if(this.g_arr[i].uid == uid){
-							this.g_arr.splice(i,1)
-						}
-					}
-				},
-				insert_g_arr(json){
-					// 加入购物车
-					var type = true;
-					for(var i=0;i<this.g_arr.length;i++){
-						if(this.g_arr[i].uid ==json.uid){
-							type=false
-							var num = this.g_arr[i].s
-							num++
-							this.$set(this.g_arr[i],'s',num)
-						}
-					}
-					if(type){
-						this.$set(json,'s',1)
-						this.g_arr.push(json)
-					}
-				}
-			},
-			computed:{
-				z_num(){
-					var num = 0;
-					for(var i=0;i<this.g_arr.length;i++){
-						num+=this.g_arr[i].j*this.g_arr[i].s
-					}
-					return num
-				},
-				c_g_arr(){
-					var arr = []
-					for(var i=0;i<this.g_arr.length;i++){
-						if(arr.indexOf(this.g_arr[i].t) == -1){
-							arr.push(this.g_arr[i].t)
-						}
-					}
-					return arr
-				}
-			},
-			data:{
-				g_arr:[],
-				arr: [{
-						uid: 0,
-						n: '苹果',
-						t: '水果',
-						j: 10
-					},
-					{
-						uid: 1,
-						n: '雪梨',
-						t: '水果',
-						j: 5
-					},
-					{
-						uid: 2,
-						n: '衣柜',
-						t: '家具',
-						j: 999
-					},
-					{
-						uid: 3,
-						n: '立式衣架',
-						t: '家具',
-						j: 199
-					},
-					{
-						uid: 4,
-						n: '小米8',
-						t: '电子产品',
-						j: 2699
-					},
-					{
-						uid: 5,
-						n: '华为 pro30',
-						t: '电子产品',
-						j: 5499
-					},
-				]
-			}
-		})
-	</script>
-</body>
-</html>
+        <div id="tm-section-2" class="parallax-window" data-parallax="scroll" data-image-src="img/bg-img-02.jpg">
+          <section class="container tm-page-1-content tm-page-2">
+            <div class="row">
+              <article class="col-md-6 tm-article tm-bg-white-transparent">
+                <header><h2 >Left Column</h2></header>
+                <b>Donec id augue ac risus faucibus elementum. Quisque tincidunt, sapien et tincidunt suscipit, diam ipsum iaculis augue, nec semper orci ex a arcu. Donec efficitur sem sed ligula mollis.</b>
+              </article>
+
+              <article class="col-md-6 tm-article tm-bg-white-transparent">
+                <header><h2>Right Column</h2></header>
+                <b>Donec id augue ac risus faucibus elementum. Quisque tincidunt, sapien et tincidunt suscipit, diam ipsum iaculis augue, nec semper orci ex a arcu. Duis commodo orci libero.</b>
+                
+                  <a href="#tm-section-3" class="btn btn-danger ml-auto mr-0 tm-btn-block">Details...</a>
+              </article>
+            </div>
+          </section>
+        </div>
+        <div id="tm-section-3" class="parallax-window" data-parallax="scroll" data-image-src="img/bg-img-03.jpg">
+          <section class="container tm-page-1-content">
+            <div class="row1">
+              <div class="col-xl-6 col-md-8 ml-auto">
+                <article class="tm-bg-white-transparent-page3">
+                  <header><h5 class="tm-bg-white">Individual HTML5 Web Template</h5></header>
+                  <p class="tm-bg-white2">Do you like this template? Please tell your friends about Tooplate website. Thank you. Praesent scelerisque erat placerat tempus laoreet. Vivamus pellentesque tempor congue. Vestibulum ac diam dui. Vivamus a fringilla velit. Proin mauris enim.</p>
+                    <a href="#tm-section-4" class="btn btn-danger tm-btn-right">Read More</a>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="tm-section-4" class="parallax-window" data-parallax="scroll" data-image-src="img/bg-img-04.jpg">
+
+          <div class="row tm-page-4-content">
+            <article  class="col-xs-6 col-md-4 tm-bg-white-transparent">
+              <header><h3>Nunc sagittis</h3></header>
+              <p>Orci varius natoque penatibus et  magnis dis parturient montes, nascetur ridiculus mus. Praesent vel est varius nisi posuere aliquet. Aliquam luctus, dolor vel euismod scelerisque, sem mi commodo nisi.</p>
+            </article>
+            <article class="col-xs-6 col-md-4 tm-bg-white-transparent">
+              <header><h3>Duis euismod</h3></header>
+              <p>Orci varius natoque penatibus et  magnis dis parturient montes, nascetur ridiculus mus. Praesent vel est varius nisi posuere aliquet. Aliquam luctus, dolor vel euismod scelerisque, sem mi commodo nisi.</p>
+            </article>
+            <article class="col-xs-6 col-md-4 tm-bg-white-transparent">
+              <header><h3>Ipsum vitae mattis</h3></header>
+              <p>Orci varius natoque penatibus et  magnis dis parturient montes, nascetur ridiculus mus. Praesent vel est varius nisi posuere aliquet. Aliquam luctus, sem mi commodo nisi.</p>
+            </article>
+          </div>
+        </div>
+        <div class="parallax-window" data-parallax="scroll" data-image-src="img/bg-img-05.jpg">
+          <div class="container">
+            <div class="row">
+              <div class="tm-img-container">
+                <div class="tm-img-slider">
+ 
+                    <a class="image-link" href="img/gallery-img-01.jpg"><img src="img/gallery-img-01-tn.jpg" alt="Image" class="tm-slider-img"></a>
+                    <a class="image-link" href="img/gallery-img-02.jpg"><img src="img/gallery-img-02-tn.jpg" alt="Image" class="tm-slider-img"></a>
+                    <a class="image-link" href="img/gallery-img-03.jpg"><img src="img/gallery-img-03-tn.jpg" alt="Image" class="tm-slider-img"></a>  
+                    <a class="image-link" href="img/gallery-img-04.jpg"><img src="img/gallery-img-04-tn.jpg" alt="Image" class="tm-slider-img"></a>
+                    <a class="image-link" href="img/gallery-img-05.jpg"><img src="img/gallery-img-05-tn.jpg" alt="Image" class="tm-slider-img"></a>
+                    <a class="image-link" href="img/gallery-img-06.jpg"><img src="img/gallery-img-06-tn.jpg" alt="Image" class="tm-slider-img"></a>
+                      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="parallax-window tm-position-relative tm-form-section" data-parallax="scroll" data-image-src="img/bg-img-06.jpg">
+          <div class="container ">
+            <div class="row1 ">
+              <div class="col-xs-12">
+                <header><h5>Contact Us</h5></header>
+              </div>
+            </div>
+            <div class="row tm-page-5-content">
+              <div class="col-lg-4 col-md-6 col-xs-12">
+                <div class="contact_message">                  
+                  <form action="#contact" method="post" class="contact-form">
+                    <div class="form-group">
+                      <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
+                    </div>
+                    <div class="form-group">
+                      <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>
+                    </div>
+                    <div class="form-group">
+                      <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger tm-btn-submit">Submit</button>
+                  </form>
+                </div>
+              </div>
+              <div class="col-lg-8 col-md-6 col-xs-12">
+                <div class="tm-address-box">
+                  <p>Integer pretium volutpat tempor. Maecenas condimentum tincidunt leo. Paesent scelerisque erat placerat tempus laoreet. Vivamus pellentesque tempor congue. Vestibulum ac diam dui. Vivamus a fringilla velit.
+                  </p>
+                  <br>
+                  <address>
+                    <b>Our Address</b><br>
+                    <br>
+                    440-660 Proin mauris enim,<br>
+                    dignissim sit amet ligula id,<br>
+                    finibus tempus erat 10200
+                  </address>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer">
+              <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+              </div>
+            </div>
+            
+          </div>
+
+
+          <!-- load JS files -->
+          <script src="js/jquery-1.11.3.min.js"></script>        <!-- jQuery (https://jquery.com/download/) -->
+          <script src="js/parallax.min.js"></script>
+     
+          <script type="text/javascript" src="slick/slick.min.js"></script> 
+          <!-- Slick Carousel -->
+
+          <!-- Magnific Popup core JS file -->
+          <script src="js/jquery.magnific-popup.min.js"></script>
+          
+
+          <script>
+
+            function setCarousel() {
+
+              var slider = $('.tm-img-slider');
+
+              if (slider.hasClass('slick-initialized')) {
+                slider.slick('destroy');
+              }
+
+              if($(window).width() > 991){
+                  // Slick carousel
+                  slider.slick({
+                    dots: true,
+                    infinite: true,
+                    slidesToShow: 4,
+                    slidesToScroll: 1
+                  });
+                }
+                else {
+                 slider.slick({
+                  dots: true,
+                  infinite: true,
+                  slidesToShow: 2,
+                  slidesToScroll: 1
+                });
+               }
+             }
+
+             $(document).ready(function(){
+
+              setCarousel();
+              $('.tm-img-slider').magnificPopup({
+                delegate: 'a', // child items selector, by clicking on it popup will open
+                type: 'image'
+                // other options
+
+              });
+
+              $(window).resize(function() {
+                setCarousel();
+              });
+            });
+
+          </script>
+        </body>
+        </html>
